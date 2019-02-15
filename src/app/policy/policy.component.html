@@ -1,0 +1,75 @@
+<rcc-navigation></rcc-navigation>
+
+<h1 class='page-title'>View Policy</h1>
+<div class="container">
+  <button id="create-button" *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="mat-raised-button mat-primary create-policy" mat-button-ripple (click)="openCreatePolicyDialog();">Create New Policy</button>
+  <mat-card>
+    <mat-card-title>
+      You have <strong>{{unackPolicies.length}}</strong> {{unackPolicies.length == 1 ? 'policy' : 'policies'}} that need{{unackPolicies.length == 1 ? 's' : ''}} to be acknowledged.
+    </mat-card-title>
+  </mat-card>
+
+  <mat-accordion *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="policy-header">
+          <h3 class="ackTitle">List of All Policies</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="policy" *ngFor="let policy of allPolicies">
+        <div class="panel-half">
+          <a matTooltip="{{policy.url}}" target="_blank" class="policy-title" href="{{policy.url}}">{{policy.title}}</a>
+          <p class="policy-description">{{policy.description}}</p>
+          <p class="num-acknowledged-text" matTooltip="click to see list" (click)="openListUnackDialog(policy)"><strong>{{policy.numHaveAcked}}</strong> / <strong>{{policy.numHavePolicy}}</strong> have acknowledged</p>
+        </div>
+        <div class="panel-half">
+          <button *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="ackBtn mat-raised-button" mat-button-ripple (click)="openEditPolicyDialog(policy);">
+            <span class="mobile-icon-text">Edit </span><i class="material-icons">edit</i>
+          </button>
+          <button *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="ackBtn mat-raised-button mat-error" mat-button-ripple (click)="deletePolicy(policy);">
+            <span class="mobile-icon-text">Delete </span><i class="material-icons">delete</i>
+          </button>
+        </div>
+        <hr *ngIf="unackPolicies.length > 1">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="policy-header">
+          <h3 class="ackTitle">Unacknowledged Policies</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="policy unackPolicy" *ngFor="let policy of unackPolicies">
+        <div class="panel-half">
+          <a matTooltip="{{policy.url}}" target="_blank" class="policy-title" href="{{policy.url}}">{{policy.title}}</a>
+          <p class="policy-description">{{policy.description}}</p>
+        </div>
+        <div class="panel-half">
+          <button class="ackBtn mat-raised-button mat-primary" (click)='acknowledgePolicy(policy.id, userID);'>Acknowledge</button>
+        </div>
+        <hr *ngIf="unackPolicies.length > 1">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="policy-header">
+        <h3 class="ackTitle">Acknowledged Policies</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="policy" *ngFor="let policy of ackPolicies">
+        <a matTooltip="{{policy.url}}" target="_blank" href="{{policy.url}}">{{policy.title}}</a>
+        <p class="policy-description">{{policy.description}}</p>
+        <p class="completed">Created: {{policy.date}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

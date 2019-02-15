@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)" class="edit-policy-form">
+  <h2 mat-dialog-title>{{policy.title === '' ? 'Create New Policy' : 'Editing Policy: '}}<strong>{{policy.title}}</strong></h2>
+  <rcc-select-departments></rcc-select-departments>
+  <mat-dialog-content class="edit-policy-dialog">
+
+    <mat-form-field class="input-fullwidth">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="{{policy.title}}" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="input-fullwidth">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="{{policy.description}}" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="input-fullwidth">
+      <mat-label>URL</mat-label>
+      <input matInput placeholder="{{policy.url}}" formControlName="url">
+    </mat-form-field>
+    
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button class="mat-raised-button" (click)="close()" type="button">Cancel</button>
+    <button class="mat-raised-button mat-primary" type="submit">Save</button>
+    <mat-label class="small-text">*You may leave fields empty to keep those values unchanged.</mat-label>
+  </mat-dialog-actions>
+</form>

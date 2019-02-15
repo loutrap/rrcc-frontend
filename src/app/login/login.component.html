@@ -1,0 +1,28 @@
+<h1 class='page-title'>Employee Login</h1>
+
+<form (ngSubmit)="login()" #loginForm="ngForm">
+<div class="container">
+  <div id="form-box">
+    <mat-form-field>
+      <input matInput (blur)="validateEmail(email)" placeholder="Email Address" name="email" [(ngModel)]="email" required>
+    </mat-form-field>
+    <div class="error" *ngIf="!emailValid">Email is Invalid</div>
+
+    <mat-form-field>
+      <input matInput (blur)="validatePassword(password)" type="password" placeholder="Password" name="password" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <div class="error" *ngIf="!passwordValid">Password is at least 8 characters and contains 1 uppercase, 1 lowercase, 1 number, and 1 special character.</div>
+
+    <div [hidden]='hideInvalidMsg' id='invalidCreds'>
+      Invalid credentials. Please try again
+    </div>
+  </div>
+
+  <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.form.valid">Login</button>
+  <a routerLink="/forgot-password">Forgot Password?</a>
+
+  <div id="register-box">
+    <button mat-raised-button color="primary" routerLink="/registration">Register</button>
+  </div>
+</div>
+</form>

@@ -1,0 +1,10 @@
+
+<h5>Select Recipients:</h5>
+<div id="checkbox-group" *ngIf="userType === SUPERUSER || userType === ADMIN" >
+  <mat-checkbox [disabled]="isDisabled" (click)="onClickDepartment(allEmployees)">{{allEmployees}}</mat-checkbox>
+  <mat-checkbox [checked]="isChecked" [disabled]="isDisabledGroup" *ngFor="let department of departments" (click)="onClickDepartment(department)">{{department.name}}</mat-checkbox>
+</div>
+
+<div id="checkbox-group" *ngIf="userType === DPTHEAD" >
+  <mat-checkbox [checked]="true" [disabled]="true">{{userDeptName}}</mat-checkbox>
+</div>

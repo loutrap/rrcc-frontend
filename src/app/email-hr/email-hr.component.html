@@ -1,0 +1,13 @@
+<rcc-navigation></rcc-navigation>
+<div class='container'>
+  <h1 class='page-title'>Email HR:</h1>
+  <br />
+  <form id="email-form" #registrationForm="ngForm">
+    <h5>Robin Antill</h5>
+    <h6>Director of Human Resources</h6>
+    <h6>rantill@rrcc.com</h6>
+    <label>From:  {{currentUser}}</label>
+    <textarea class="form-control" rows="10" id="email" name="msg" [(ngModel)]="emailMessage">{{emailMessage}}</textarea>
+    <button id="send-text" mat-raised-button color="primary" (click)="sendMessage(emailMessage)">Send Email</button>
+  </form>
+</div>

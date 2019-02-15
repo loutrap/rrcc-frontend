@@ -1,0 +1,42 @@
+#desktop-logout {
+  display: none;
+}
+.notification-icon {
+  border: 1px solid black;
+  border-radius: 20%;
+  padding: 2px;
+}
+
+#rrcc-logo {
+  width: 340px;
+}
+
+#help-link {
+  text-decoration: underline;
+  margin-right: 30px;
+  color:  rgba(255,255,255,.5);
+  font-weight: 500;
+  font-size: .85em;
+}
+
+#help-link:hover {
+  color: #fff;
+}
+
+@media only screen and (min-width: 992px) {
+  #mobile-logout {
+    display: none;
+  }
+  #rrcc-logo {
+    width: 411px;
+  }
+  #desktop-logout{
+    display: block;
+  }
+  .welcome-title {
+    margin: 0 20px 0 0;
+  }
+  .notification-icon {
+    margin: 0 50px 0 0;
+  }
+}

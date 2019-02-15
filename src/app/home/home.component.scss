@@ -1,0 +1,36 @@
+@media only screen and (min-width: 992px) {
+
+
+  .notifications mat-card {
+    padding: 25px;
+  }
+
+  .notifications h6 {
+    margin-top: 20px;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .notifications mat-card {
+    margin-bottom: 40px;
+  }
+  .notifications mat-card-title,
+  .notifications mat-card-subtitle {
+    margin-bottom: 4px;
+  }
+
+  .material-icons {
+    font-size: 32px;
+  }
+
+  .mat-card-content a {
+    font-size: 12pt;
+  }
+
+  ul a {
+    color: black;
+  }
+}
+

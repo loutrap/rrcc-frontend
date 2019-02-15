@@ -1,0 +1,84 @@
+<rcc-navigation></rcc-navigation>
+
+<h1 class='page-title'>CSV Compare</h1>
+<div class="container">
+  <div class="uploader">
+    <!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
+    <input class="" id="choose-file-input" type="file" name="photo" ng2FileSelect [uploader]="uploader"/>
+    <!-- button to trigger the file upload when submitted -->
+    <button id="upload-csv-button" mat-raised-button color="primary"
+            (click)="uploadFile()"
+            [disabled]="!uploader.getNotUploadedItems().length">
+      Upload CSV
+    </button>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="expandNewEmployees">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-header">
+          <h3 class="panel-title">New Employee Entries</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <table class="employee-table" mat-table [dataSource]="newEmployees">
+        <!-- Errors seen below are a problem with the IDE, not the code :-) -->
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+        <!-- ({{element.phone.toString().substr(0, 3)}}) - {{element.phone.toString().substr(2,3)}} - {{element.phone.toString().substr(6,4)}} -->
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-header">
+          <h3 class="panel-title">Existing Employee Entries</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <table mat-table [dataSource]= "existingEmployees">
+        <!-- Errors seen below are a problem with the IDE, not the code :-) -->
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

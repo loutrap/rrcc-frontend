@@ -1,0 +1,30 @@
+.uploader {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.panel-title {
+  font-size: 1.4em;
+}
+
+#choose-file-input {
+  margin-bottom: 15px;
+}
+
+#upload-csv-button {
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 992px) {
+  .uploader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .panel-title {
+    font-size: 1.75em;
+  }
+
+}

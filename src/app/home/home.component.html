@@ -1,0 +1,16 @@
+<rcc-navigation></rcc-navigation>
+
+<img src="assets/banner.jpg" id="banner-img">
+<div class="container">
+  <div class="notifications">
+    <mat-card id="home-card">
+      <mat-card-title>Notifications</mat-card-title>
+      <hr>
+      <mat-card-content>
+        <a routerLink="/policy/"><h6><i class="material-icons orange600" *ngIf="unackPolicies.length > 0">notification_important</i>You have <strong class="">{{unackPolicies.length}}</strong> policies that need to be acknowledged.</h6></a>
+        <hr>
+        <a routerLink="/survey/"><h6><i class="material-icons orange600" *ngIf="unackSurveys.length > 0">notification_important</i>You have <strong class="">{{unackSurveys.length}}</strong> surveys that need to be acknowledged.</h6></a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

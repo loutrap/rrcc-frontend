@@ -1,0 +1,56 @@
+.container {
+  margin-bottom: 20px;
+}
+.mat-card {
+  margin-bottom: 20px;
+}
+/* Policies and Surveys */
+.ackTitle {
+  font-size: 1.4em;
+}
+
+@media only screen and (min-width: 992px) {
+  .survey-header {
+    font-size: 1.5em;
+  }
+  .mobile-icon-text {
+    display: none;
+  }
+  mat-card {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .survey .mat-checkbox {
+    font-size: 1.5em;
+    text-decoration: underline;
+  }
+  .survey .completed {
+    text-align: right;
+    font-style: italic;
+  }
+  .unackSurvey {
+    margin-bottom: 24px;
+  }
+  .completed {
+    margin-bottom: 0;
+  }
+  /* Policies and Surveys */
+  .ackTitle {
+    font-size: 1.5em;
+  }
+  .ackBtn {
+    float: right;
+  }
+  .survey-description {
+    margin-bottom: 0;
+  }
+  .panel-half {
+    display: inline-block;
+    width: 50%;
+    margin: 0;
+  }
+  .panel-half button {
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+}

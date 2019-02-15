@@ -1,0 +1,72 @@
+<rcc-navigation></rcc-navigation>
+
+<h1 class='page-title'>View Survey</h1>
+<div class="container">
+  <button id="create-button" *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="mat-raised-button mat-primary create-survey" mat-button-ripple (click)="openCreateSurveyDialog();">Create New Survey</button>
+  <mat-card>
+    <mat-card-title>
+      You have <strong>{{unackSurveys.length}}</strong> {{unackSurveys.length == 1 ? 'survey' : 'surveys'}} that need{{unackSurveys.length == 1 ? 's' : ''}} to be acknowledged.
+    </mat-card-title>
+  </mat-card>
+
+  <mat-accordion *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="survey-header">
+          <h3 class="ackTitle">List of All Surveys</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="survey" *ngFor="let survey of allSurveys">
+        <div class="panel-half">
+          <a matTooltip="{{survey.url}}" target="_blank" class="survey-title" href="{{survey.url}}">{{survey.title}}</a>
+          <p class="survey-description">{{survey.description}}</p>
+          <p class="num-acknowledged-text" matTooltip="click to see list" (click)="openListUnackDialog(survey)"><strong>{{survey.numHaveAcked}}</strong> / <strong>{{survey.numHaveSurvey}}</strong> have acknowledged</p>
+        </div>
+        <div class="panel-half">
+          <button *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="ackBtn mat-raised-button" mat-button-ripple (click)="openEditSurveyDialog(survey);">
+            <span class="mobile-icon-text">Edit </span><i class="material-icons">edit</i>
+          </button>
+          <button *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="ackBtn mat-raised-button mat-error" mat-button-ripple (click)="deleteSurvey(survey);">
+            <span class="mobile-icon-text">Delete </span><i class="material-icons">delete</i>
+          </button>
+        </div>
+        <hr *ngIf="unackSurveys.length > 1">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="survey-header">
+          <h3 class="ackTitle">Uncompleted Surveys</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="survey unackSurvey" *ngFor="let survey of unackSurveys">
+        <div class="panel-half">
+          <a matTooltip="{{survey.url}}" target="_blank" class="survey-title" href="{{survey.url}}" (click)='acknowledgeSurvey(survey.id, userID);'>{{survey.title}}</a>
+          <p class="survey-description">{{survey.description}}</p>
+        </div>
+        <hr *ngIf="unackSurveys.length > 1">
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="survey-header">
+          <h3 class="ackTitle">Completed Surveys</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="survey" *ngFor="let survey of ackSurveys">
+        <a matTooltip="{{survey.url}}" target="_blank" href="{{survey.url}}">{{survey.title}}</a>
+        <p class="survey-description">{{survey.description}}</p>
+        <p class="completed">Created: {{survey.date}}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

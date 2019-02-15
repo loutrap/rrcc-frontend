@@ -1,0 +1,43 @@
+<div id="nav-banner">
+    <img src="assets/RRCC_Logo.png" id="rrcc-logo"/>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item" [ngClass]="router.url === '/home' ? 'active' : ''">
+                <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li *ngIf="userType === SUPERUSER || userType === ADMIN" class="nav-item admin-option" [ngClass]="router.url === '/users' ? 'active' : ''">
+                <a class="nav-link" routerLink="/users">Manage Users</a>
+            </li>
+            <li class="nav-item" [ngClass]="router.url === '/policy' ? 'active' : ''">
+                <a class="nav-link" routerLink="/policy">Policies</a>
+            </li>
+            <li class="nav-item" [ngClass]="router.url === '/survey' ? 'active' : ''">
+                <a class="nav-link" routerLink="/survey">Surveys</a>
+            </li>
+            <li *ngIf="userType === SUPERUSER || userType === ADMIN || userType === DPTHEAD" class="nav-item" [ngClass]="router.url === '/alerts' ? 'active' : ''">
+                <a class="nav-link" routerLink="/alerts">Alerts</a>
+            </li>
+            <li *ngIf="userType === SUPERUSER || userType === ADMIN" class="nav-item" [ngClass]="router.url === '/csv' ? 'active' : ''">
+              <a class="nav-link" routerLink="/csv">CSV</a>
+            </li>
+            <li class="nav-item" [ngClass]="router.url === '/email-hr' ? 'active' : ''">
+                <a class="nav-link" routerLink="/email-hr">Email HR</a>
+            </li>
+            <li class="nav-item" [ngClass]="router.url === '/user-settings' ? 'active' : ''">
+                <a class="nav-link" routerLink="/user-settings">User Settings</a>
+            </li>
+        </ul>
+        <button (click)="callLogoutService()" id="mobile-logout" mat-raised-button routerLink="/login" color="warn" class="order-sm-12">Logout</button>
+        <div class="dropdown-divider"></div>
+
+    </div>
+    <a id="help-link" href="{{helpUrl}}" target="_blank">Help?</a>
+    <h6 class="oder-sm-1 welcome-title">Welcome, {{fName}}!</h6>
+    <button (click)="callLogoutService()" mat-raised-button routerLink="/login" id="desktop-logout" color="warn">Logout</button>
+
+</nav>

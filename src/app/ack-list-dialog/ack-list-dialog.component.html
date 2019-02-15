@@ -1,0 +1,40 @@
+<div class="container">
+  <h1 mat-dialog-title>
+    {{data.title}}<br />
+    <mat-divider></mat-divider>
+  </h1>
+  <p>{{employees.length > 0 ? 'Employees that have not acknowledged ' + data.title + ':' : data.title + ' has been acknowledged by all Employees.'}}</p>
+
+  <mat-dialog-content class="mat-typography">
+
+    <table *ngIf="employees.length > 0" mat-table [dataSource]= "employees">
+      <!-- Errors seen below are a problem with the IDE, not the code :-) -->
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fname + ' ' + element.lname}} </td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+      <!-- ({{element.phone.toString().substr(0, 3)}}) - {{element.phone.toString().substr(2,3)}} - {{element.phone.toString().substr(6,4)}} -->
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button class="mat-raised-button" mat-dialog-close type="button">Close</button>
+  </mat-dialog-actions>
+</div>

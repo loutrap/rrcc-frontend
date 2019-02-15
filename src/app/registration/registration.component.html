@@ -1,0 +1,73 @@
+<h1 class='page-title'>User Registration</h1>
+
+<div class="container">
+  <form (ngSubmit)="register()" #registrationForm="ngForm">
+    <div id="form-box">
+      <mat-form-field>
+        <input matInput (blur)="validateField(registrant.fName, 'fName')" placeholder="First Name" name="fName" [(ngModel)]="registrant.fName" required>
+      </mat-form-field>
+      <div class="error" *ngIf="!fNameValid">First Name is Invalid</div>
+
+      <mat-form-field>
+        <input matInput (blur)="validateField(registrant.lName, 'lName')" placeholder="Last Name" name="lName" [(ngModel)]="registrant.lName" required>
+      </mat-form-field>
+      <div class="error" *ngIf="!lNameValid">Last Name is Invalid</div>
+
+      <mat-form-field>
+        <input matInput (blur)="validateField(registrant.email, 'email')" placeholder="Email" name="email" [(ngModel)]="registrant.email" required>
+      </mat-form-field>
+      <div class="error" *ngIf="!emailValid">Email is Invalid</div>
+
+
+      <div id="phone-num-section">
+        <label>Cell Phone Number *</label>
+        <div id="phone-num-fields">
+          <mat-form-field class="phone-field short-field first-phone-field">
+            <input matInput (blur)="validateField(registrant.phoneNum, 'phone')" name="phone1" [(ngModel)]="phone1" minlength="3" maxlength="3" required>
+          </mat-form-field>
+          <label>-</label>
+
+          <mat-form-field class="phone-field short-field">
+            <input matInput (blur)="validateField(registrant.phoneNum, 'phone')" name="phone2" [(ngModel)]="phone2" minlength="3" maxlength="3" required>
+          </mat-form-field>
+          <label>-</label>
+
+          <mat-form-field class="phone-field long-field">
+            <input matInput (blur)="validateField(registrant.phoneNum, 'phone')" name="phone3" [(ngModel)]="phone3" minlength="4" maxlength="4" required>
+          </mat-form-field>
+        </div>
+        <div class="error" *ngIf="!phoneValid">Phone Number is not valid</div>
+        <div id="disclaimer">**By registering you agree to receive alerts from the RCC via text message</div>
+      </div>
+
+      <mat-form-field>
+        <mat-select placeholder="Department" name="department" [(ngModel)]="registrant.department" required>
+          <mat-option *ngFor="let dept of departments" [value]="dept">{{dept.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div id="password-section">
+        <div id="password-criteria-p">Your password must contain at least 8 characters.</div>
+        <ul id="password-criteria-list">
+            <li>1 uppercase</li>
+            <li>1 lowercase</li>
+            <li>1 numeric</li>
+            <li>1 special character</li>
+          </ul>
+        <mat-form-field class="password-field">
+          <input matInput (blur)="validateField(registrant.password, 'pw1'); passwordMatch(registrant.password, passwordRepeated)" type="password" placeholder="Password" name="password" [(ngModel)]="registrant.password" required>
+        </mat-form-field>
+        <div class="error" *ngIf="!pw1Valid">Password is not Valid</div>
+
+        <mat-form-field class="password-field">
+            <input matInput (blur)="validateField(passwordRepeated, 'pw2'); passwordMatch(registrant.password, passwordRepeated)" type="password" placeholder="Re-enter Password" name="pwdValidation" [(ngModel)]="passwordRepeated" required>
+        </mat-form-field>
+        <div class="error" *ngIf="!pwMatch">Passwords do not Match</div>
+      </div>
+    </div>
+    <div id="buttons-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registrationForm.form.valid">Register</button>
+      <br />
+      <a color="primary" routerLink="/login">Back to Login</a>
+    </div>
+  </form>
+</div>

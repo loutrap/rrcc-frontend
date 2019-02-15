@@ -1,0 +1,50 @@
+<rcc-navigation></rcc-navigation>
+
+<h1 class="page-title">User Settings</h1>
+<div class="container center-container">
+  <form (ngSubmit)="updateUserPassword()" #registrationForm="ngForm">
+    <div id="form-box">
+      <h5>Change Password</h5>
+      <div id="password-criteria-p">Your password must contain at least 8 characters.</div>
+      <ul id="password-criteria-list">
+        <li>1 uppercase</li>
+        <li>1 lowercase</li>
+        <li>1 numeric</li>
+        <li>1 special character</li>
+      </ul>
+      <mat-form-field class="password-field">
+        <input matInput (blur)="validateField(newPassword, 'pw1'); passwordMatch(newPassword, newPasswordRepeated)" type="password" placeholder="New Password" name="password" [(ngModel)]="newPassword" required>
+      </mat-form-field>
+      <div class="error" *ngIf="!pw1Valid">Password is not Valid</div>
+
+      <mat-form-field class="password-field">
+        <input matInput (blur)="validateField(newPasswordRepeated, 'pw2'); passwordMatch(newPassword, newPasswordRepeated)" type="password" placeholder="Re-enter New Password" name="pwdValidation" [(ngModel)]="newPasswordRepeated" required>
+      </mat-form-field>
+      <div class="error" *ngIf="!pwMatch">Passwords do not Match</div>
+
+      <button mat-raised-button color="primary">Change Password</button>
+    </div>
+  </form>
+  <form (ngSubmit)="updateUserInfo()" #registrationForm="ngForm">
+    <div id="form-box">
+      <h5>Personal Info</h5>
+      <mat-form-field>
+        <input matInput placeholder="First Name" name="fName" [(ngModel)]="fName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Last Name" name="lName" [(ngModel)]="lName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email Address" name="email" [(ngModel)]="email" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" name="phone" [(ngModel)]="phone" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Update Info</button>
+    </div>
+  </form>
+</div>

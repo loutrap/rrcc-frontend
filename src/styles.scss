@@ -1,0 +1,191 @@
+/* Styles imported from libraries */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Global Styles */
+
+/* --- General Styles --- */
+/* Page Headers */
+.page-title {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Cards */
+.mat-card {
+  margin: 0;
+  padding: 0;
+}
+.mat-card-title {
+  margin-left: 10px;
+}
+.mat-card h6 {
+  font-size: 1.5em;
+  margin: 0px 0px 20px 20px;
+  font-weight: 400;
+}
+a, a:visited, a:active {
+  // color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Create Buttons */
+#create-button {
+  display: flex;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+
+// .uploader {
+//   display: block;
+//   width: 90%;
+// }
+
+/* Departments Checkboxes */
+#checkbox-group > * {
+  margin: 0 5px;
+}
+@media only screen and (max-width: 600px) {
+  #checkbox-group > * {
+    margin: 0 5px;
+    display: block;
+  }
+}
+
+/* Employee Tables */
+.container td.mat-cell {
+  padding-right: 24px;
+}
+.container th {
+  font-size: 1em;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 1100px) {
+  .center-container {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+  }
+  .container td.mat-cell {
+    padding-right: 12px;
+  }
+}
+
+/* Errors */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-42 { font-size: 42px; }
+.error, .error-color {
+  color: red;
+}
+.mat-typography {
+  margin-top: 10px;
+}
+
+/* Icons */
+//center icon in button
+.notifications i, i.material-icons {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* Navigation */
+#nav-banner {
+  width: 100%;
+  display: flex;
+  background: #eee;
+}
+nav{
+  background-color: #3f51b5;
+}
+.welcome-title {
+  color: white;
+}
+#rrcc-logo {
+  margin: 10px auto 10px auto;
+}
+
+/* Send Text Form */
+button#send-text {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* --- Page-Specific --- */
+/* CSV buttons */
+// .uploader {
+//   display: flex;
+//   justify-content: center;
+//   margin-bottom: 40px;
+// }
+
+/* Home */
+#banner-img {
+  width: 100%;
+  margin-bottom: 40px;
+}
+.notifications .material-icons {
+  font-size: 24px;
+}
+.notifications .mat-card-content a {
+  font-size: 8pt;
+}
+.notifications mat-card {
+  padding: 25px;
+}
+.material-icons.orange600 { color: #FB8C00; }
+
+/* Policies and Surveys */
+.ackTitle {
+  font-size: 1.75em;
+  margin-top:10px;
+}
+.panel-half {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+.panel-half button {
+  margin: 0px 20px 25px 0px;
+}
+.num-acknowledged-text {
+  display: inline-block;
+}
+.num-acknowledged-text:hover {
+  cursor: pointer;
+  color: grey;
+}
+.policy-description, .survey-description {
+  margin-bottom: 0px;
+}
+
+/* Policy and Survey Dialogs */
+.edit-policy-dialog .input-fullwidth,
+.edit-survey-dialog .input-fullwidth {
+  width: 100%;
+}
+.edit-policy-form,
+.edit-survey-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+mat-dialog-actions.dialog-actions button {
+  margin-right: 10px;
+}
+.small-text {
+  margin-top: 5px;
+  font-size: 0.7em;
+}
+
+

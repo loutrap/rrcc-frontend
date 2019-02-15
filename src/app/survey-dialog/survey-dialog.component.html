@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)" class="edit-survey-form">
+  <h2 mat-dialog-title>{{survey.title === '' ? 'Create New Survey' : 'Editing Survey: '}}<strong>{{survey.title}}</strong></h2>
+  <rcc-select-departments></rcc-select-departments>
+  <mat-dialog-content class="edit-survey-dialog">
+    <mat-form-field class="input-fullwidth">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="{{survey.title}}" formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="input-fullwidth">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="{{survey.description}}" formControlName="description">
+    </mat-form-field>
+    <mat-form-field class="input-fullwidth">
+      <mat-label>URL</mat-label>
+      <input matInput placeholder="{{survey.url}}" formControlName="url">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button class="mat-raised-button" (click)="close()" type="button">Cancel</button>
+    <button class="mat-raised-button mat-primary" type="submit">Save</button>
+    <mat-label class="small-text">*You may leave fields empty to keep those values unchanged.</mat-label>
+  </mat-dialog-actions>
+</form>
